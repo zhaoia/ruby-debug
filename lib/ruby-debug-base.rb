@@ -101,7 +101,7 @@ module Debugger
       @reload_on_change=nil unless defined?(@reload_on_change)
       line = LineCache::getline(filename, line_number, @reload_on_change)
       return "\n" unless line
-      return "#{line.gsub(/^\s+/, '').chomp}\n"
+      return "#{line.force_encoding("UTF-8").gsub(/^\s+/, '').chomp}\n"
     end
 
     #
